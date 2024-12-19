@@ -1,0 +1,119 @@
+/* Ensure the entire viewport is used */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Flexbox Layout for Sticking Footer */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* General Dark Mode Styles */
+body {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #1f1f1f; /* Darker header background */
+    color: #ffffff; /* Light text color */
+    padding: 0.5em 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1em;
+}
+
+.navigation ul li {
+    display: inline;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: #bb86fc; /* Accent color */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navigation ul li a:hover {
+    color: #03dac6; /* Lighter accent color on hover */
+}
+
+/* Separator Line */
+.separator {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #333333; /* Subtle separator line */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #1f1f1f;
+    color: #bbbbbb;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2em;
+    font-size: 0.9em;
+}
+
+/* Main content should expand to fill available space */
+main {
+    flex: 1; /* Fills available space */
+    padding: 1em;
+}
+
+/* Social Media Icons Styling */
+footer .socials {
+    margin-top: 10px;
+}
+
+footer .socials ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* Space between the icons */
+    justify-content: center; /* Center the icons */
+}
+
+footer .socials ul li {
+    display: inline-block;
+}
+
+footer .socials ul li a {
+    display: block;
+    width: 40; /* Set the icon size */
+    height: 40px;
+}
+
+footer .socials ul li a img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease; /* Add hover effect */
+    filter: brightness(0) invert(1); /* White color for dark mode */
+}
+
+footer .socials ul li a:hover img {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}

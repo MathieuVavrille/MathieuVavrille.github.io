@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: gaming
 title: About
 permalink: /about/
 ---
-
-About me ?
+This is the about page.

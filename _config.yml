@@ -18,7 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Mathieu Vavrille
+fullname: Mathieu Vavrille
+title: Mathieu Vavrille's Website
 email: mathieu.vavrille@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   My personal website where you can find everything interesting about me.
@@ -26,9 +27,15 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: MathieuVavrille
 
+nav:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
+
 # Build settings
-theme: minima
-show_posts: false
 
 # Exclude from processing.
 # The following items will not be processed, by default.
