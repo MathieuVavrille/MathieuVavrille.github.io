@@ -30,10 +30,8 @@ github_username: MathieuVavrille
 nav:
   - title: Home
     url: /
-  - title: Experience
-    url: /experience/
-  - title: Contact
-    url: /contact/
+  - title: CV
+    url: /cv/
 
 # Build settings
 

@@ -1,39 +1,58 @@
 ---
 layout: default
-title: Experience
-permalink: /experience/
+title: CV
+permalink: /cv/
 ---
 
 <div class="cv-container">
-    <h1>Curriculum Vitae</h1>
+  <h1>Work and Education</h1>
 
-    <section class="cv-section">
-        <button class="cv-toggle">Education</button>
-        <div class="cv-details">
-            <p><strong>B.Sc. in Computer Science</strong>, University XYZ, 2018–2022</p>
-            <p><strong>M.Sc. in Data Science</strong>, University ABC, 2022–2024</p>
-        </div>
-    </section>
+  <section class="cv-section">
+    <button class="cv-toggle">Education</button>
+    <div class="cv-details">
+      <p><strong>B.Sc. in Computer Science</strong>, University XYZ, 2018–2022</p>
+      <p><strong>M.Sc. in Data Science</strong>, University ABC, 2022–2024</p>
+    </div>
+  </section>
 
-    <section class="cv-section">
-        <button class="cv-toggle">Work Experience</button>
-        <div class="cv-details">
-            <p><strong>Software Engineer</strong>, TechCorp, 2022–Present</p>
-            <ul>
-                <li>Developed scalable web applications using modern technologies.</li>
-                <li>Collaborated with cross-functional teams to deliver high-quality software.</li>
-            </ul>
-        </div>
-    </section>
+  <section class="cv-section">
+    <button class="cv-toggle">Work Experience</button>
+    <div class="cv-details">
+      <p><strong>Software Engineer</strong>, TechCorp, 2022–Present</p>
+      <ul>
+        <li>Developed scalable web applications using modern technologies.</li>
+        <li>Collaborated with cross-functional teams to deliver high-quality software.</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="cv-section">
-        <button class="cv-toggle">Skills</button>
-        <div class="cv-details">
-            <ul>
-                <li>Programming: Python, JavaScript, C++</li>
-                <li>Frameworks: React, Node.js, Django</li>
-                <li>Tools: Git, Docker, Kubernetes</li>
-            </ul>
-        </div>
-    </section>
+  <section class="cv-section">
+    <button class="cv-toggle">Skills</button>
+    <div class="cv-details">
+      <ul>
+        <li>Programming: Python, JavaScript, C++</li>
+        <li>Frameworks: React, Node.js, Django</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+        <li>Tools: Git, Docker, Kubernetes</li>
+      </ul>
+    </div>
+  </section>
+  <div class="cv-frame">
+    <div class="cv-frame-left">
+      <h3>Master Degree</h3>
+      {% capture master1_content %}
+      <ul>
+	<li> **Institution**: University ABC </li>
+	<li>**Program**: Data Science </li>
+	<li>**Duration**: 2022–2023 </li>
+      </ul>
+      {% endcapture %}
+      {% include cv_section.html title="Master 1" content=master1_content %}
+      {% include cv_section.html title="Master 2" content="Here" %}
+    </div>
+  </div>
 </div>

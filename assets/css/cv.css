@@ -1,0 +1,94 @@
+
+/* General CV Container */
+.cv-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+/* Section Headers */
+.cv-section {
+    margin-bottom: 1em;
+}
+
+.cv-toggle {
+    width: 100%;
+    text-align: left;
+    background-color: #333;
+    color: white;
+    padding: 0.8em;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cv-toggle:hover {
+    background-color: #444;
+}
+
+/* Details Section (Hidden by Default) */
+.cv-details {
+    display: none;
+    padding: 0.5em 1em; /* Restore padding when expanded */
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    line-height: 1.6;
+    max-height: 0; /* Collapsed by default */
+    overflow: hidden; /* Hide overflowing content */
+    transition: max-height 0.5s ease, padding 0.5s ease; /* Smooth transition */
+}
+
+.cv-details ul {
+    padding-left: 20px;
+}
+
+.cv-details ul li {
+    list-style-type: disc;
+}
+
+/* Active Details */
+.cv-section.active .cv-details {
+    display: block;
+}
+
+/* Container for the grouped CV frame */
+.cv-frame {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    background-color: #181818;
+    color: #fff;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+
+/* Left side of the frame */
+.cv-frame-left {
+    flex: 2;
+}
+
+/* Style the SVG icon */
+.cv-toggle-icon {
+    transition: transform 0.3s ease; /* Smooth rotation */
+    margin-left: 0.5em; /* Space between text and arrow */
+    width: 30px; /* Adjust size */
+    height: 30px;
+    fill: none; /* Ensure no background fill */
+    stroke: #fff; /* Icon color */
+}
+
+/* Rotate the SVG when active */
+.cv-section.active .cv-toggle-icon {
+    transform: rotate(180deg); /* Flip the arrow */
+}
