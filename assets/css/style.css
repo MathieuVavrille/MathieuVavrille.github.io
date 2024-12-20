@@ -117,3 +117,74 @@ footer .socials ul li a img {
 footer .socials ul li a:hover img {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
+
+/* General CV Container */
+.cv-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+/* Section Headers */
+.cv-section {
+    margin-bottom: 1em;
+}
+
+.cv-toggle {
+    width: 100%;
+    text-align: left;
+    background-color: #333;
+    color: white;
+    padding: 0.8em;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cv-toggle:hover {
+    background-color: #444;
+}
+
+/* Details Section (Hidden by Default) */
+.cv-details {
+    display: none;
+    padding: 0.8em;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    line-height: 1.6;
+}
+
+.cv-details ul {
+    padding-left: 20px;
+}
+
+.cv-details ul li {
+    list-style-type: disc;
+}
+
+/* Active Details */
+.cv-section.active .cv-details {
+    display: block;
+}
+
+.cv-details {
+    max-height: 0; /* Collapsed by default */
+    overflow: hidden; /* Hide overflowing content */
+    transition: max-height 0.5s ease, padding 0.5s ease; /* Smooth transition */
+    padding: 0; /* No padding when collapsed */
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 1.6;
+    margin-top: 0.5em;
+}
+
+/* Active Section */
+.cv-section.active .cv-details {
+    padding: 1em; /* Restore padding when expanded */
+}
