@@ -1,0 +1,11 @@
+<div class="icon-text-layout">
+  <div class="icon">
+    <img src="/assets/icons/calendar.svg" alt="Calendar">
+  </div>
+  {{ include.time | default: 'Date' }}
+  <div class="icon">
+    <img src="/assets/icons/location.svg" alt="Location" margin_right="1em">
+  </div>
+  {{ include.location | default: 'Where' }}
+  {{ include.job }}
+</div>
