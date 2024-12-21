@@ -1,0 +1,12 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="{{ site.author }}">
+  <link rel="icon" href="/assets/logo.png" type="image/x-icon">
+  <!-- Import necessary files -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/cv.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/cv.js' | relative_url }}"></script>
+</head>
