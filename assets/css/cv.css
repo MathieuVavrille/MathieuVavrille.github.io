@@ -2,9 +2,63 @@
 /* General CV Container */
 .cv-container {
     font-family: Arial, sans-serif;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 1em;
+}
+
+
+/* Outer frame */
+.outer-frame {
+    padding: 0em 1em; /* Add space between content and the outer frame */
+    border: 2px solid #222; /* Dark outer border */
+    background-color: #1a1a1a; /* Outer frame background color */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    margin: 1em 0em; /* Add margin around the frame */
+}
+
+/* Horizontal layout container */
+.horizontal-layout {
+    display: flex;
+    align-items: stretch; /* Stretch children to equal height */
+    justify-content: space-between; /* Space between left and right sections */
+    margin: 1em 0;
+    gap: 1em; /* Add spacing between the two sections */
+}
+
+/* Horizontal layout container */
+.horizontal-layout.no-margin {
+    margin-bottom: 0em;
+}
+
+/* Left side text */
+.text-left {
+    flex: 1; /* Take up remaining horizontal space */
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.6; /* Adjust for better readability */
+    overflow-wrap: break-word; /* Handle long words gracefully */
+}
+
+/* Right side frame */
+.vertical-frame {
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    width: 50px; /* Fixed width */
+    border: 1px solid #444; /* Frame border */
+    border-radius: 5px;
+    background-color: #282828; /* Frame background color */
+}
+
+/* Vertical text */
+.vertical-text {
+    writing-mode: vertical-rl; /* Rotate text vertically */
+    transform: rotate(180deg); /* Flip the text to read bottom-to-top */
+    text-align: center; /* Center text alignment */
+    color: #fff; /* Text color */
+    font-size: 1em;
+    font-weight: bold;
 }
 
 /* Section Headers */
@@ -58,25 +112,6 @@
 /* Active Details */
 .cv-section.active .cv-details {
     display: block;
-}
-
-/* Container for the grouped CV frame */
-.cv-frame {
-    display: flex;
-    /*flex-direction: row;*/
-    flex: 2;
-    gap: 1em;
-    background-color: #181818;
-    color: #fff;
-    border-radius: 5px;
-    padding: 1em;
-    margin-top: 1em;
-}
-
-
-/* Left side of the frame */
-.cv-frame-left {
-    flex: 2;
 }
 
 /* Style the SVG icon */
