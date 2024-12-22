@@ -117,22 +117,3 @@ footer .socials ul li a img {
 footer .socials ul li a:hover img {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
-
-.cv-section-title {
-    display: flex; /* Use inline-block for divs to appear side by side */
-    align-items: center; /* Vertically align icons and text */
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.icon {
-    width: 30px; /* Set a consistent size for icons */
-    height: 30px;
-    display: inline-block; /* Use inline-block for divs to appear side by side */
-    object-fit: contain; /* Ensure icons scale properly */
-    filter: brightness(0) invert(1); /* White color for dark mode */
-    margin: .5em;
-    margin-top: 0;
-    margin-bottom: .2em;
-    filter: brightness(0) invert(1); /* White color for dark mode */
-}

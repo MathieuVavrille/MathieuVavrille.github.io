@@ -9,17 +9,8 @@ permalink: /cv/
   <div class="outer-frame">
     <div class="horizontal-layout">
       <div class="text-left">
-	<div class="cv-section-title">
-	  <div class="icon" style="margin-left: 0em">
-	    <img src="/assets/icons/calendar.svg" alt="Calendar">
-	  </div>
-	  Dec. 2023 -- Ongoing
-	  <div class="icon">
-	    <img src="/assets/icons/location.svg" alt="Location">
-	  </div>
-	  WaltR, Nantes, France
-	</div>
 	<h2>Scientific Engineer and Computer Science Developement</h2>
+	{% include cv_section_title.html when="Dec. 2023 -- Ongoing" where="WaltR, Nantes, France" %}
 	<p>
           More info.
 	</p>
@@ -36,17 +27,8 @@ permalink: /cv/
   <div class="outer-frame">
     <div class="horizontal-layout">
       <div class="text-left">
-	<div class="cv-section-title">
-	  <div class="icon" style="margin-left: 0em">
-	    <img src="/assets/icons/calendar.svg" alt="Calendar">
-	  </div>
-	  Sep. 2020 -- Sep. 2023
-	  <div class="icon">
-	    <img src="/assets/icons/location.svg" alt="Location">
-	  </div>
-	  LS2N, Nantes, France
-	</div>
-	<h2>Finding Diverse Solutions in Constraint Programming with Probabilistic Approaches</h2>
+	<h2>P.h.D. Finding Diverse Solutions in Constraint Programming with Probabilistic Approaches</h2>
+	{% include cv_section_title.html when="Sep. 2020 -- Sep. 2023" where="LS2N, Nantes, France" %}
 	<p>
           More info.
 	</p>
@@ -79,10 +61,23 @@ permalink: /cv/
 
 	<div class="horizontal-layout" style="margin-bottom: 0em;">
 	  <div class="text-left">
-
-	    {% include cv_section.html title="Cryptography Internship" content="TODO" %}
-	    {% include cv_section.html title="Algorithmic Internship" content="TODO" %}
-	    {% include cv_section.html title="Optimisation Internship" content="TODO" margin_bottom="0em" %}
+	    {% capture cryptography_internship %}
+	    {% include internship_details.html when="Mar. 2020 -- Jul. 2020" where="IRISA, Rennes, France" who="Supervised by Stéphanie Delaune and Patrick Derbez" %}
+	    TODO more details (link the article).
+	    {% endcapture %}
+	    {% include cv_section.html title="Internship: Differential Boomerang Attack using CP" content=cryptography_internship %}
+	    <!-- -->
+	    {% capture ordering_internship %}
+	    {% include internship_details.html when="Jan. 2020 -- Feb. 2020" where="LS2N, Nantes, France" who="Supervised by Colin de la Higuera" %}
+	    TODO more details.
+	    {% endcapture %}
+	    {% include cv_section.html title="Internship: Ordering Educational Ressources" content=ordering_internship %}
+	    <!-- -->
+	    {% capture satalia_internship %}
+	    {% include internship_details.html when="Oct. 2019 -- Dec. 2019" where="Satalia, London, United Kingdom" who="Supervised by Sebastian Schenker and Matthieu David" %}
+	    TODO more details.
+	    {% endcapture %}
+	    {% include cv_section.html title="Internship: Evaluating Quality of an Approximated Algorithm" content=satalia_internship margin_bottom="0em" %}
 	  </div>
 	  <div class="vertical-frame">
 	    <div class="vertical-text">
@@ -93,7 +88,11 @@ permalink: /cv/
 	<div class="horizontal-layout" style="margin-bottom: 0em;">
 	  <div class="text-left">
 
-	    {% include cv_section.html title="Internship" content="TODO" %}
+	    {% capture master2_internship %}
+	    {% include internship_details.html when="Jan. 2019 -- Jun. 2019" where="Satalia, London, United Kingdom" who="Supervised by Charlotte Truchet" %}
+	    TODO more details.
+	    {% endcapture %}
+	    {% include cv_section.html title="Internship: Binary Decision Diagrams in Constraint Programming" content=master2_internship %}
 	    <h3> Favourite Courses </h3>
 	    <ul>
 	      <li> Online Optimisation, Bruno Gaujal</li>

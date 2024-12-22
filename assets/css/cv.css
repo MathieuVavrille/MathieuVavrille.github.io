@@ -128,3 +128,38 @@
 .cv-section.active .cv-toggle-icon {
     transform: rotate(180deg); /* Flip the arrow */
 }
+
+.cv-section-title {
+    display: flex; /* Use inline-block for divs to appear side by side */
+    align-items: center; /* Vertically align icons and text */
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.icon {
+    width: 30px; /* Set a consistent size for icons */
+    height: 30px;
+    object-fit: contain; /* Ensure icons scale properly */
+    margin: .5em;
+    margin-top: 0;
+    margin-bottom: .2em;
+    filter: brightness(0) invert(1); /* White color for dark mode */
+}
+
+.cv-internship-details {
+    display: flex; /* Use inline-block for divs to appear side by side */
+    align-items: center; /* Vertically align icons and text */
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1em;
+    margin-left: 0;
+    margin-top: .5em;
+}
+.icon-smaller {
+    width: 20px; /* Set a consistent size for icons */
+    height: 20px;
+    object-fit: contain; /* Ensure icons scale properly */
+    margin: .5em;
+    margin-top: 0;
+    margin-bottom: .4em;
+    filter: brightness(0) invert(1); /* White color for dark mode */
+}
