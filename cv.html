@@ -28,7 +28,7 @@ permalink: /cv/
 	</ul>
 	Talks:
 	<ul>
-	  <li>AI in health-environment: <a href="TODO">pitch of the project</a></li>
+	  <li>AI in health-environment: <a href="https://www.youtube.com/watch?v=1uiODYnx348&list=PLl00syIAMv7S-RVFAieSgFpEg3hBORnbA&index=8">pitch of the project</a></li>
 	</ul>
 	{% endcapture %}
 	{% include cv_section.html title="AMELIA project" content=amelia %}
@@ -62,10 +62,10 @@ permalink: /cv/
       {% include cv_section_title.html when="Sep. 2020 -- Sep. 2023" where="LS2N, Nantes, France" %}
       <h2>P.h.D. Finding Diverse Solutions in Constraint Programming with Probabilistic Approaches</h2>
       <p>
-        TODO abstract. See the <a href="/publications/">Publication</a> page for the list of publications.
+       See the <a href="/publications/">Publication</a> page for the list of publications.
       </p>
       {% capture manuscript %}
-      The full text manuscript is available in <a href="TODO">theses.fr</a>
+      The full text manuscript is available in <a href="https://theses.fr/2023NANU4024">theses.fr</a>.
       <ul>
 	<li>Bibliography on sampling algorithm, and design of TableSampling</li>
 	<li>Use of search strategies to improve the solutions' diversity</li>
@@ -77,20 +77,22 @@ permalink: /cv/
       <ul>
 	<li>Design and implementation of a generic CP sampling algorithm</li>
 	<li>Analysis of its properties</li>
-	<li>Young researcher award at <a href="TODO">JFPC 2021</a></li>
-	<li>Conference presentation available <a href="TODO">here</a>, with a humorous trailer <a href="TODO">here</a></li>
+	<li>Young researcher award at <a href="https://webusers.i3s.unice.fr/jfpc_2021/prix/">JFPC 2021</a></li>
+	<li>Conference presentation available <a href="https://www.youtube.com/watch?v=iX0d_7E-oIc">here</a>, with a humorous trailer <a href="https://www.youtube.com/watch?v=Ss4A6OaG_sg">here</a></li>
       </ul>
       {% endcapture %}
       {% include cv_section.html title="Table Sampling" content=table_sampling %}
       {% capture cp_app %}
       <ul>
 	<li>Development of an Android app to solve logic games (Sudoku, Kakuro, Slitherlink, ...)</li>
-	<li>Won the honorable mention (there were no winner, only 2 honorable mentions) in the <a href="TODO">CP app competition</a>, hosted during the CP 2022 conference</li>
-	<li>App no longer in the Play Store due to lack of updates. TODO apk download ?</li>
+	<li>Won the honorable mention (there were no winner, only 2 honorable mentions) in the <a href="https://cp2022.a4cp.org/acp_app.html">CP app competition</a>, hosted during the CP 2022 conference</li>
+	<li>App no longer in the Play Store due to lack of updates. Maybe I will make the apk available here (TODO ?)</li>
       </ul>
       {% endcapture %}
       {% include cv_section.html title="Logic Games Solver: CP App Competition Winner" content=cp_app margin_bottom="0em" %}
-
+      Other interesting facts:
+      <ul>
+	<li>
     </div>
     <div class="vertical-frame">
       <div class="vertical-text">
@@ -121,7 +123,7 @@ permalink: /cv/
 	  <ul>
 	    <li>Internship as part of the <a href="https://decrypt.limos.fr/">DeCrypt ANR project</a> about using Constraint Programming in cryptography</li>
 	    <li>Analysis of the boomerang attack, and formalisation of the computation of the attack probability</li>
-	    <li>Publication of an article in the TODO ARTICLE</li>
+	    <li>Publication of an article in the ToSC conference (see the <a href="/publications/">Publications</a> page)</li>
 	  </ul>
 	  {% endcapture %}
 	  {% include cv_section.html title="Internship: Differential Boomerang Attack using CP" content=cryptography_internship %}
@@ -156,10 +158,10 @@ permalink: /cv/
 	  {% include internship_details.html when="Jan. 2019 -- Jun. 2019" where="Satalia, London, United Kingdom" who="Supervised by Charlotte Truchet" %}
 	  <ul>
 	    <li>Study of the BDD structure as a constraint store and a variable domain, and of the algorithms to filter the domain</li>
-	    <li>Implementation this BDD inside the AbSolute Solver (TODO add link)</li>
+	    <li>Implementation this BDD inside the <a href="https://github.com/mpelleau/AbSolute">AbSolute</a> solver</li>
 	    <li>Application to solving a symmetric key cryptographic problem: differential attack on AES</li>
 	  </ul>
-	  Links to the <a href="/downloads/master2_report.pdf">report</a> and the <a href="/downloads/master2_presentation.pdf">presentation</a>. TODO
+	  Links to the <a href="/downloads/internships/master2_report.pdf">report</a> and the <a href="/downloads/internships/master2_presentation.pdf">presentation</a>.
 	  {% endcapture %}
 	  {% include cv_section.html title="Internship: Binary Decision Diagrams in Constraint Programming" content=master2_internship %}
 	  <h3> Favourite Courses </h3>
@@ -185,7 +187,7 @@ permalink: /cv/
 	    <li>Creation of an algorithm for the problem of total coloring of cubic graphs </li>
 	    <li>Estimation of its running time complexity using the measure and conquer technique and linear programming</li>
 	  </ul>
-	  Links to the <a href="/downloads/master1_report.pdf">report</a> and the <a href="/downloads/master1_presentation.pdf">presentation</a>. TODO
+	  Links to the <a href="/downloads/internships/master1_report.pdf">report</a> and the <a href="/downloads/internships/master1_presentation.pdf">presentation</a>.
 	  {% endcapture %}
 	  {% include cv_section.html title="Internship: Total Coloring of Cubic Graphs" content=master1_internship %}
 	  <h3> Favourite Courses </h3>
@@ -209,7 +211,7 @@ permalink: /cv/
 	    <li>Programmed in Ocaml</li>
 	    <li>Work on constraint programming on integers in the AbSolute Solver</li>
 	  </ul>
-	  Links to the <a href="/downloads/master1_report.pdf">report</a> and the <a href="/downloads/master1_presentation.pdf">presentation</a>. TODO
+	  Links to the <a href="/downloads/internships/bachelor_report.pdf">report</a> and the <a href="/downloads/internships/bachelor_presentation.pdf">presentation</a>.
 	  {% endcapture %}
 	  {% include cv_section.html title="Internship: A Discrete Constraint Solver Using Abstract Interpretation" content=bachelor_internship %}
 	  <h3> Favourite Courses </h3>
