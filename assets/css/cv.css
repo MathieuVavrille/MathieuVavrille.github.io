@@ -1,13 +1,4 @@
 
-/* General CV Container */
-.cv-container {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1em;
-}
-
-
 /* Outer frame */
 .outer-frame {
     padding: 0em 1em; /* Add space between content and the outer frame */
@@ -81,10 +72,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 2px solid #444; /* Dark outer border */
+
 }
 
 .cv-toggle:hover {
     background-color: #444;
+    border: 2px solid #555; /* Dark outer border */
 }
 
 /* Details Section (Hidden by Default) */

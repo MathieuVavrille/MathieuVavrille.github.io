@@ -32,6 +32,10 @@ nav:
     url: /
   - title: CV
     url: /cv/
+  - title: Publications
+    url: /publications/
+  - title: Projects
+    url: /projects/
 
 # Build settings
 

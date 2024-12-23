@@ -117,3 +117,11 @@ footer .socials ul li a img {
 footer .socials ul li a:hover img {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
+
+/* General CV Container */
+.page-container {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1em;
+}
