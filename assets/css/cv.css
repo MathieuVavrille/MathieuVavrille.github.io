@@ -157,3 +157,10 @@
     margin-bottom: .4em;
     filter: brightness(0) invert(1); /* White color for dark mode */
 }
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}

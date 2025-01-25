@@ -1,0 +1,109 @@
+.projects-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  height: 100vh;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.5s ease;
+}
+
+.project {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 50px;
+}
+
+.project img {
+  width: 200px;
+  height: auto;
+  margin: 0 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.project img.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-gallery-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px
+}
+
+.project-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*padding: 20px;*/
+  overflow: hidden; /* Hides images that overflow the container */
+}
+
+.project-gallery img {
+  height: 500px; /* Set the height for the images */
+  object-fit: cover; /* Ensures the aspect ratio is maintained */
+  border-radius: 8px; /* Optional: adds rounded corners */
+  position: relative; /* Ensures images appear under the fade */
+}
+
+.project-gallery {
+  position: relative; /* Allows positioning of pseudo-elements */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px; /* Spacing between images */
+  /*padding: 20px;*/
+  height: 500px; /* Set a fixed height for the container */
+  overflow: hidden; /* Hides images that overflow the container */
+}
+
+.project-gallery::before,
+.project-gallery::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px; /* Height of the fade */
+  pointer-events: none; /* Ensures the fade does not block interactions */
+  z-index: 1; /* Ensures the fade is above the images */
+}
+
+.project-gallery::before {
+  top: 0;
+  background: linear-gradient(to bottom, #121212ff, #12121200);
+}
+.project-gallery::after {
+  bottom: 0;
+  background: linear-gradient(to top, #121212ff, #12121200);
+}
+
+
+
+.text-overlay {
+  position: absolute;
+  top: 50%; /* Vertically center the box */
+  left: 10%; /* Position 25% from the left */
+  right: 50%;
+  transform: translate(0, -50%); /* Adjust vertical centering */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  color: #fff; /* White text color for contrast */
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: left;
+  z-index: 2;
+  /*width: 700px;*/
+  box-shadow: 5px 10px 6px rgba(0, 0, 0, 0.5); /* Optional: adds subtle shadow */
+}
