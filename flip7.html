@@ -1,0 +1,81 @@
+---
+layout: fullscreen
+title: Flip7 Solver
+permalink: /flip7/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+      }
+
+      .buttons {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  gap: 5px;
+	  margin: 30px auto;
+      }
+
+      .number-button {
+	  padding: 0;
+	  margin: 0;
+	  border: none;
+	  background: none;
+	  cursor: pointer;
+	  width: auto;
+	  height: auto;
+	  /* All 13 buttons share the available space */
+	  width: calc((100% - 60px) / 13);
+	  min-width: 0;
+	  border: 5px solid transparent;
+	  border-radius: 8px;
+      }
+
+      .number-button img {
+	  display: block;
+	  width: 100%;
+	  height: auto;
+	  object-fit: contain;
+	  border-radius: 5px;
+      }
+
+      .number-button:hover {
+          background-color: #aaa;
+      }
+
+      .number-button.selected {
+          background-color: red;
+      }
+
+      #result {
+	  white-space: pre-line;
+          font-size: 30px;
+	  font-weight: bold;
+	  margin-top: 30px;
+      }
+
+      #selected {
+	  margin-top: 15px;
+	  color: #555;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Flip7 Solver</h1>
+
+    <div class="buttons" id="buttons"></div>
+    <div class="buttons" id="bonusButtons"></div>
+
+    <div id="result">
+    </div>
+
+    <script type="module" src="/scripts/flip7.js" defer></script>
+
+  </body>
+</html>

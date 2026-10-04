@@ -36,6 +36,8 @@ nav:
     url: /publications/
   - title: Projects
     url: /projects/
+  - title: Flip7 Solver
+    url: /flip7/
 
 # Build settings
 
