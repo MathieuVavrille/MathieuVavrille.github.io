@@ -30,7 +30,7 @@ permalink: /flip7/
 	  width: auto;
 	  height: auto;
 	  /* All 13 buttons share the available space */
-	  flex: 1 1 0;
+	  width: calc((100% - 60px) / 13);
 	  min-width: 0;
 	  border: 5px solid transparent;
 	  border-radius: 8px;
@@ -70,12 +70,12 @@ permalink: /flip7/
     <h1>Flip7 Solver</h1>
 
     <div class="buttons" id="buttons"></div>
+    <div class="buttons" id="bonusButtons"></div>
 
     <div id="result">
-      Average gain: 1
     </div>
 
-    <script src="/scripts/flip7.js" defer></script>
+    <script type="module" src="/scripts/flip7.js" defer></script>
 
   </body>
 </html>

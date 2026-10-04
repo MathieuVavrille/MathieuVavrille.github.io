@@ -1,61 +1,90 @@
 
+// Load the computed results
+async function loadResults() {
+    const response = await fetch("/assets/flip7/results.json");
+    return await response.json();
+}
+
+// Select/unselect a button
+function toggleButton(button) {
+    if (button.classList.contains("selected")) {
+	button.classList.remove("selected");
+    } else {
+        button.classList.add("selected");
+    }
+    showResults();
+}
+
+// Encode a hand into an integer to access computed_result dictionnary
+function encodeHand(){
+    const numberButtons = Array.from(numberContainer.querySelectorAll("button"));
+    const bonusButtons = Array.from(bonusContainer.querySelectorAll("button"));
+    let encoded = 0;
+    let nb_numbers = 0;
+    for (let i = 0; i <= 12; i++) {
+	nb_numbers += ((numberButtons[i].classList.contains("selected")) ? 1 : 0)
+	encoded = 2 * encoded + ((numberButtons[i].classList.contains("selected")) ? 1 : 0);
+    }
+    var plus = 0;
+    for (let i = 0; i < 5; i++) {
+	plus += (i+1) * ((bonusButtons[i].classList.contains("selected")) ? 1 : 0)
+    }
+    encoded = 16 * encoded + plus;
+    encoded = 2 * encoded + ((bonusButtons[5].classList.contains("selected")) ? 1 : 0);
+    encoded = 2 * encoded + ((bonusButtons[6].classList.contains("selected")) ? 1 : 0);
+    return [encoded, nb_numbers];
+}
+
+// Show the (already computed) results
+function showResults() {
+    const [encodedHand, nb_numbers] = encodeHand();
+    if (nb_numbers > 7) {
+	document.getElementById("result").innerHTML = `<span style="color: red;">Select fewer cards</span><br><br>`;
+    } else {
+	const [score, expected] = computed_results[encodedHand];
+	if (nb_numbers == 7) {
+	    document.getElementById("result").innerHTML = `<span style="color: blue;">Flip7 !</span><br>Score: ${score}<br>`;
+	} else {
+	    const text =  (expected < score) ? "Stop" : "Continue";
+	    const color =  (expected < score) ? "red" : "green";
+	    document.getElementById("result").innerHTML = `<span style="color: ${color};">${text}</span><br>Score: ${score}<br>Expected gain: ${(expected - score).toFixed(1)}`;
+	}
+    }
+}
+
+
+
+const computed_results = await loadResults();
 
 // Keep track of the buttons that have been pressed
-let selectedNumbers = Array(13).fill(false);;
+let selectedNumbers = Array(13).fill(false);
+let selectedBonuses = [0, false, false];
 let score = 0;
 let nb_cards_in_hand = 0;
 
 // Create the 13 buttons
-const buttonContainer = document.getElementById("buttons");
+const numberContainer = document.getElementById("buttons");
+const bonusContainer = document.getElementById("bonusButtons");
 
-for (let i = 0; i <= 12; i++) {
+// Create the buttons
+function createButton(img_path, img_alt) {
     const button = document.createElement("button");
     //button.textContent = i;
     button.classList.add("number-button");
-    button.addEventListener("click", function () {
-        toggleNumber(i, button);
-    });
+    button.addEventListener("click", function () {toggleButton(button);});
     const img = document.createElement("img");
-    img.src = `/assets/flip7/${i}.png`;
-    img.alt = `${i}`;
-
+    img.src = img_path;
+    img.alt = img_alt;
     button.appendChild(img);
-    buttonContainer.appendChild(button);
+    return button
 }
-
-computeProduct();
-
-
-// Add/remove a number from the selection
-function toggleNumber(number, button) {
-    if (selectedNumbers[number]) {
-        // Remove the number
-        selectedNumbers[number] = false;
-	score -= number;
-	nb_cards_in_hand -= 1;
-	button.classList.remove("selected");
-    } else {
-        // Add the number
-        selectedNumbers[number] = true;
-	score += number;
-	nb_cards_in_hand += 1;
-        button.classList.add("selected");
-    }
-    computeProduct();
+for (let i = 0; i <= 12; i++) {
+    numberContainer.appendChild(createButton(`/assets/flip7/${i}.png`, `${i}`));
 }
-
-// Compute the product of all selected numbers
-function computeProduct() {
-    document.getElementById("result").textContent = "";
-    let average = 0.;
-    const total_nb_cards = 1 + 6 * 13;
-    let flip7Bonus = (nb_cards_in_hand == 6) ? 15. : 0.;
-    for (let i = 0; i <= 12; i++) {
-	const proba = (Math.max(1, i) - (selectedNumbers[i] ? 1 : 0)) / total_nb_cards;
-	const reward = selectedNumbers[i] ? -score : (i + flip7Bonus);
-	average += proba * reward;
-    }
-    const text = average < 0 ? "Stop" : "Continue";
-    const color = average < 0 ? "red" : "green";
-    document.getElementById("result").innerHTML = `<span style="color: ${color};">${text}</span><br>Gain: ${average.toFixed(1)}`;
+for (let i = 2; i <= 10; i += 2) {
+    bonusContainer.appendChild(createButton(`/assets/flip7/plus${i}.png`, `+${i}`));
 }
+bonusContainer.appendChild(createButton(`/assets/flip7/times2.png`, `x2`));
+bonusContainer.appendChild(createButton(`/assets/flip7/second_chance.png`, `🤍`));
+
+showResults();
