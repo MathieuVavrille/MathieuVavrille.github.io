@@ -38,6 +38,8 @@ nav:
     url: /projects/
   - title: Flip7 Solver
     url: /flip7/
+  - title: Vector Race
+    url: /vector-race/
 
 # Build settings
 
