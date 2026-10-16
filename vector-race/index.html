@@ -4,21 +4,19 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#10151c">
   <meta name="description" content="Une course tactique sur grille. Anticipe ton inertie, ajuste ton vecteur et arrête-toi sur la ligne d’arrivée. Avec un éditeur de circuits." data-i18n-content="html.une.course.tactique.sur.grille.anticipe.ton.inertie.ajuste.ton.vecteur.et">
-  <title data-i18n-slots="0:html.vector.race.lelan.se.calcule">Vector Race — L’élan se calcule.</title>
+  <title >Vector Race</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#course" aria-label="Vector Race, accueil" data-i18n-aria-label="html.vector.race.accueil"><svg viewbox="0 0 36 36" aria-hidden="true"><path d="M5 29 14 7h16L20 29h-7l7-15h-2l-6 15z" fill="currentColor"></path></svg><span data-i18n-slots="0:html.vector">VECTOR<span class="brand-light" data-i18n-slots="0:html.race">RACE</span></span><span class="edition" data-i18n-slots="0:html.grid.racing.club">GRID RACING CLUB</span></a>
-    <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="html.navigation.principale"><button data-view="race" class="active" data-i18n-slots="0:html.course">Course<span>01</span></button><button data-view="editor" data-i18n-slots="0:html.atelier">Atelier<span>02</span></button></nav>
+    <a class="brand" href="#course" aria-label="Vector Race, accueil" data-i18n-aria-label="html.vector.race.accueil"><svg viewbox="0 0 36 36" aria-hidden="true"><path d="M5 29 14 7h16L20 29h-7l7-15h-2l-6 15z" fill="currentColor"></path></svg><span data-i18n-slots="0:html.vector">VECTOR<span class="brand-light" data-i18n-slots="0:html.race">RACE</span></span></a>
+    <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="html.navigation.principale"><button data-view="race" class="active" data-i18n-slots="0:html.course">Course</button><button data-view="editor" data-i18n-slots="0:html.atelier">Atelier</button></nav>
     <div class="header-actions"><span class="local-tag" data-i18n-slots="1:html.solo.tour.par.tour"><i></i> SOLO · TOUR PAR TOUR</span><button id="soundBtn" class="icon-btn" aria-label="Activer le son" title="Activer le son" data-i18n-title="app.activer.le.son" data-i18n-aria-label="app.activer.le.son"><span id="soundIcon">♪</span></button><button id="themeBtn" class="icon-btn" aria-label="Activer le thème clair" title="Activer le thème clair" aria-pressed="false" data-i18n-title="html.activer.le.theme.clair" data-i18n-aria-label="html.activer.le.theme.clair">☀</button><button id="languageBtn" class="language-toggle" aria-label="Passer en anglais" title="Français / English" data-i18n-title="html.francais.english" data-i18n-aria-label="html.passer.en.anglais"><span data-locale="fr" data-i18n-slots="0:html.fr">FR</span><span aria-hidden="true">/</span><span data-locale="en" data-i18n-slots="0:html.en">EN</span></button><button id="helpBtn" class="icon-btn" aria-label="Afficher les règles" title="Les règles" data-i18n-title="html.les.regles" data-i18n-aria-label="html.afficher.les.regles">?</button></div>
   </header>
 
   <div id="raceView" class="race-layout">
     <aside class="paddock">
-      <div class="section-label" data-i18n-slots="0:html.le.paddock">LE PADDOCK <span data-i18n-slots="0:html.06.circuits">06 CIRCUITS</span></div>
       <h1 data-i18n-slots="0:html.lelan;2:html.se.calcule">L’élan<br>se calcule<span>.</span></h1>
-      <p class="paddock-intro" data-i18n-slots="0:html.de.la.vitesse.de.linertie;2:html.et.toujours.un.coup.davance">De la vitesse. De l’inertie.<br>Et toujours un coup d’avance.</p>
       <div class="circuit-heading"><span data-i18n-slots="0:html.choisis.ton.trace">CHOISIS TON TRACÉ</span><span id="completionCount">0/6</span></div>
       <div id="trackList" class="track-list" aria-label="Circuits" data-i18n-aria-label="html.circuits"></div>
       <div class="collection-foot"><span class="tiny-flag">⚑</span><div><strong data-i18n-slots="0:html.ta.meilleure.ligne.tattend">Ta meilleure ligne t’attend.</strong><p id="medalCount">6 tracés à maîtriser.</p></div></div>
@@ -41,8 +39,8 @@
 
     <aside class="cockpit">
       <div class="section-label" data-i18n-slots="0:html.a.toi.de.jouer">À TOI DE JOUER <span class="turn-indicator" id="turnIndicator">TOUR 01</span></div>
-      <h3 data-i18n-slots="0:html.le.prochain.coup">Le prochain coup.</h3><p class="cockpit-intro" data-i18n-slots="0:html.ajuste.ton.acceleration;2:html.ton.inertie.fera.le.reste">Ajuste ton accélération.<br>Ton inertie fera le reste.</p>
-      <div class="formula"><span data-i18n-slots="0:html.v;2:html.v2;4:html.a">v<span class="sub" data-i18n-slots="0:html.suiv">suiv.</span> = v<span class="sub" data-i18n-slots="0:html.act">act.</span> + a</span><span class="formula-arrow">↗</span></div>
+      <h3 data-i18n-slots="0:html.le.prochain.coup">Le prochain coup.</h3>
+      <div class="formula"></div>
       <div class="pad-axis" data-i18n-slots="0:html.acceleration.y">ACCÉLÉRATION Y <span>↑ +1</span></div>
       <div id="accelPad" class="accel-pad" aria-label="Choisir une accélération" data-i18n-aria-label="html.choisir.une.acceleration"></div>
       <div class="pad-x">−1 <span data-i18n-slots="0:html.acceleration.x">ACCÉLÉRATION X</span> +1 →</div>

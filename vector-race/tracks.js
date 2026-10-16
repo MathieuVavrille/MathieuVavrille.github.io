@@ -9,6 +9,6 @@ export const DEFINITIONS = [
   { id: 'precision', name: tr("tracks.fil.de.vitesse"), subtitle: tr("tracks.de.lelan.et.de.la.precision"), difficulty: tr("tracks.difficile"), tip: tr("tracks.les.couloirs.etroits.demandent.de.planifier.le.freinage.deux.ou.trois.coups"), blocks: [rect(0, 3, 0, 14), rect(0, 17, 11, 14, false), rect(14, 17, -4, 14), rect(14, 31, -4, -1, false), rect(28, 31, -4, 18), line(0, 0, 4, true), line(28, 18, 4, false)] },
 ];
 export function builtins(original) {
-  const all = [...DEFINITIONS, { id: 'original', name: tr("tracks.le.grand.trace"), subtitle: tr("tracks.ton.circuit.dorigine.au.complet"), difficulty: tr("tracks.expert"), tip: tr("tracks.cest.le.trace.contenu.dans.ton.prototype.des.courbes.elliptiques.et.un"), blocks: original }];
+  const all = [...DEFINITIONS, { id: 'original', name: tr("tracks.le.grand.trace"), subtitle: tr("tracks.grand.trace.description"), difficulty: tr("tracks.expert"), tip: tr("tracks.grand.trace.tip"), blocks: original }];
   return all.map((d, i) => makeTrack(d.blocks, { ...d, number: i + 1, gold: null }));
 }
