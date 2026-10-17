@@ -81,6 +81,42 @@ test('Une souris immobile prévisualise le nouveau coup sous le pointeur après 
   canvas.dispatch('pointerleave');assert.equal(doc.querySelectorAll('.preview').length,0);
 });
 
+test('Une flèche survolée garde le prochain vecteur et la ligne verte après chaque clic et perte de focus',async()=>{
+  doc.querySelectorAll('.track-card')[0].click();await flush();
+  const up=doc.querySelectorAll('.accel-btn').find(b=>b.dataset.acceleration==='0,1');
+  const ctx=$('raceCanvas').getContext('2d'),originalMethods=Object.fromEntries(['beginPath','moveTo','lineTo','stroke'].map(name=>[name,ctx[name]]));
+  const matchMedia=window.matchMedia;window.matchMedia=()=>({matches:false});
+  let path=[],greenSegments=[];
+  ctx.beginPath=()=>{path=[];};ctx.moveTo=(x,y)=>path.push([x,y]);ctx.lineTo=(x,y)=>path.push([x,y]);ctx.stroke=()=>{if(ctx.strokeStyle==='#c5f575')greenSegments.push(path);};
+  try{
+    up.dispatch('pointerenter',{pointerType:'mouse'});up.focus();
+    for(const [moves,velocity,destination,from,to] of [[1,'( 0, +2 )','( +2, +3 )',[2,1],[2,3]],[2,'( 0, +3 )','( +2, +6 )',[2,3],[2,6]]]){
+      greenSegments=[];up.click();
+      // Losing keyboard focus must not erase an independent mouse hover.
+      up.dispatch('blur');
+      // Repeated clicks during the animation must still be ignored.
+      assert.equal(up.disabled,false);assert.equal(up.getAttribute('aria-disabled'),'true');up.click();
+      for(let frame=0;frame<30&&up.getAttribute('aria-disabled')==='true';frame++)await flush();
+      assert.equal(up.getAttribute('aria-disabled'),'false');
+      assert.equal($('movesStat').textContent,String(moves).padStart(2,'0'));
+      assert.equal($('nextVector').textContent,velocity);assert.match($('nextPosition').textContent,new RegExp(destination.replace(/[()+]/g,'\\$&')));
+      assert.equal(up.classList.contains('preview'),true);
+      assert(greenSegments.some(segment=>JSON.stringify(segment.slice(0,2))===JSON.stringify([from,to])),'The canvas must draw the next green segment from the new position');
+    }
+    up.dispatch('pointerleave',{pointerType:'mouse'});up.dispatch('blur');assert.equal(doc.querySelectorAll('.preview').length,0);
+    assert.equal($('nextVector').textContent,'Choisis une direction');
+  }finally{Object.assign(ctx,originalMethods);window.matchMedia=matchMedia;}
+});
+
+test('La flèche au clavier retrouve son aperçu après animation sans garder un ancien survol de souris',async()=>{
+  doc.querySelectorAll('.track-card')[0].click();await flush();beginRace();
+  const buttons=doc.querySelectorAll('.accel-btn'),up=buttons.find(b=>b.dataset.acceleration==='0,1'),right=buttons.find(b=>b.dataset.acceleration==='1,0');
+  up.focus();up.click();assert.equal(up.disabled,false);await flush();
+  assert.equal($('nextVector').textContent,'( 0, +2 )');assert.equal(up.classList.contains('preview'),true);
+  up.dispatch('blur');right.focus();assert.equal($('nextVector').textContent,'( +1, +1 )');assert.equal(right.classList.contains('preview'),true);
+  right.dispatch('blur');assert.equal(doc.querySelectorAll('.preview').length,0);
+});
+
 test('Solution optimale : lecture, pause, vitesse, arrêt final et retour sans modifier la course',async()=>{
   doc.querySelectorAll('.track-card')[1].click();await flush();beginRace();
   const safe=doc.querySelectorAll('.accel-btn').find(b=>!b.classList.contains('danger')&&b.dataset.acceleration==='0,1');safe.click();await flush();
