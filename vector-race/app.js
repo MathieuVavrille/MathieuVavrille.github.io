@@ -18,7 +18,7 @@ let tracks = [], track, state, started = false, assisted = false, currentView = 
 let editor = { blocks: [], name: tr("app.mon.premier.trace"), tool: 'select', rotation: 0, point: null, history: [], future: [], savedId: null, selected: -1, activeHandle: null }, editorTrack = makeTrack([]), jobId = 0;
 let editorGesture=null,fieldSnapshot=null,penDraft=null,snapGuides=null;
 const customMinimums=new Map();
-let racePointer = null, solution = null;
+let racePointer = null, padPointer = null, solution = null;
 let raceFuture=[];
 const raceCanvas = $('raceCanvas'), editorCanvas = $('editorCanvas');
 let toastTimer,pendingHint=false;
@@ -76,7 +76,7 @@ function renderCustomTracks(){
 }
 async function updateCustomMinimum(t){if(t.gold)return;try{const r=await solveInWorker(t);if(!r.actions)return;customMinimums.set(recordKey(t),r.actions.length);t.gold=r.actions.length;if(track===t){updateUI();renderCustomTracks();}}catch{/* The circuit remains playable when a minimum cannot be computed. */}}
 function chooseTrack(t, preserve = false) {
-  stopSolution(false);cancelAnimation();track = t;hover = null;racePointer = null;raceFuture=[];hintAction = null;assisted = false;started = false;
+  stopSolution(false);cancelAnimation();track = t;hover = null;racePointer = null;padPointer = null;raceFuture=[];hintAction = null;assisted = false;started = false;
   state = initialState(t.starts[Math.floor(t.starts.length/2)] || [0,0]);
   if (preserve && data.session?.signature === recordKey(t)) {
     const restored = replay(t,data.session.start,data.session.actions);
@@ -94,7 +94,8 @@ const padDefs = [
 const padButtons = [];
 for (const [x,y,arrow,k] of padDefs) {
   const b = document.createElement('button');b.className='accel-btn';b.innerHTML=`<span class="arrow${!x&&!y?' zero':''}">${arrow}</span><span class="pad-key">${k}</span>`;b.dataset.acceleration=key([x,y]);
-  b.onpointerenter=b.onfocus=()=>{racePointer=null;setHover([x,y]);};b.onpointerleave=()=>setHover(null);b.onblur=()=>setHover(null);b.onclick=()=>play([x,y]);$('accelPad').append(b);padButtons.push(b);
+  b.onpointerenter=e=>{if(e.pointerType==='touch')return;padPointer=[x,y];racePointer=null;setHover(padPointer);};
+  b.onfocus=()=>{racePointer=null;setHover([x,y]);};b.onpointerleave=b.onpointercancel=()=>{padPointer=null;setHover(null);};b.onblur=()=>setHover(padPointer);b.onclick=()=>play([x,y]);$('accelPad').append(b);padButtons.push(b);
 }
 function updateUI() {
   if (!track || !state) return;
@@ -106,7 +107,8 @@ function updateUI() {
   $('raceStatus').textContent=solution?(solution.phase==='calculating'?tr("app.calcul.du.minimum"):solution.phase==='complete'?tr("app.solution.arret.final"):solution.phase==='paused'?tr("app.solution.pause"):tr("app.solution.lecture")):!started?tr("app.sur.la.grille"):state.status==='won'?tr("app.trace.termine2"):state.status==='crashed'?tr("app.sortie.de.piste"):assisted?tr("app.entrainement"):tr("app.course.en.cours");
   $('undoBtn').disabled=!state.actions.length||busy||Boolean(solution);$('hintBtn').disabled=!started||state.status!=='racing'||busy||Boolean(solution)||pendingHint;
   $('solveBtn').disabled=busy&&!solution;$('solveLabel').textContent=solution?(solution.phase==='calculating'?tr("app.annuler.le.calcul"):tr("app.revenir.a.ma.course")):tr("app.voir.la.solution.optimale");$('solveBtn').setAttribute('aria-expanded',String(Boolean(solution)));$('solutionPanel').hidden=!solution;$('solverHelp').hidden=Boolean(solution);
-  for(let i=0;i<padButtons.length;i++){const b=padButtons[i],a=padDefs[i].slice(0,2),n=candidate(track,state,a);b.disabled=state.status!=='racing'||busy||Boolean(solution);b.classList.toggle('danger',!n.safe);b.classList.toggle('hinted',!solution&&hintAction&&key(a)===key(hintAction));b.classList.toggle('preview',!solution&&hover&&key(a)===key(hover));b.setAttribute('aria-label',tr("app.acceleration.p0.vitesse.p1.destination.p2.p3",{p0:(fmt(a)),p1:(fmt(n.velocity)),p2:(fmt(n.pos)),p3:(n.safe?tr("app.trajectoire.possible"):tr("app.sortie.de.piste2"))}));}
+  // Keep focus and pointer events during animation; play() already blocks extra moves.
+  for(let i=0;i<padButtons.length;i++){const b=padButtons[i],a=padDefs[i].slice(0,2),n=candidate(track,state,a);b.disabled=state.status!=='racing'||Boolean(solution);b.setAttribute('aria-disabled',String(b.disabled||busy));b.classList.toggle('danger',!n.safe);b.classList.toggle('hinted',!solution&&hintAction&&key(a)===key(hintAction));b.classList.toggle('preview',!solution&&hover&&key(a)===key(hover));b.setAttribute('aria-label',tr("app.acceleration.p0.vitesse.p1.destination.p2.p3",{p0:(fmt(a)),p1:(fmt(n.velocity)),p2:(fmt(n.pos)),p3:(n.safe?tr("app.trajectoire.possible"):tr("app.sortie.de.piste2"))}));}
   updatePreview();drawRace();
 }
 function setHover(a){hover=solution?null:a;updatePreview();padButtons.forEach(b=>b.classList.toggle('preview',hover&&b.dataset.acceleration===key(hover)));drawRace();}
@@ -124,11 +126,11 @@ function updatePreview(){
   $('nextVector').textContent=n?fmt(n.velocity):!started?tr("app.le.depart.tattend"):state.status==='won'?tr("app.trajectoire.accomplie"):state.status==='crashed'?tr("app.la.piste.avait.une.limite"):tr("app.choisis.une.direction");
   $('nextPosition').textContent=n?`${n.safe?n.win?tr("app.arrivee.a.larret"):tr("app.destination"):tr("app.hors.piste")} : ${fmt(n.pos)}`:!started?tr("app.choisis.ton.point.de.depart.puis.une.premiere.acceleration"):tr("app.survole.une.fleche.pour.previsualiser");
 }
-function startRace(){if(started||solution)return;started=true;sound();if(camera.scale<15){camera.scale=24;camera.cx=state.pos[0];camera.cy=state.pos[1]+4;}updateUI();saveSession();raceCanvas.focus({preventScroll:true});}
+function startRace(focusCanvas=true){if(started||solution)return;started=true;sound();if(camera.scale<15){camera.scale=24;camera.cx=state.pos[0];camera.cy=state.pos[1]+4;}updateUI();saveSession();if(focusCanvas)raceCanvas.focus({preventScroll:true});}
 function cancelAnimation(){if(animation)cancelAnimationFrame(animation.frame);animation=null;busy=false;}
 function play(a,redo=false){
   if(state.status!=='racing'||busy||solution||$('gameDialog').open||$('introDialog').open)return;
-  if(!started)startRace();
+  if(!started)startRace(false);
   if(!redo)raceFuture=[];
   const from=[...state.pos];state=move(track,state,a);hintAction=null;busy=true;sound(state.status==='racing'?'move':state.status);updateUI();saveSession();
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,duration=reduced?0:190,start=performance.now();
