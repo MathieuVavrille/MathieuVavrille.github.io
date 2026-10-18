@@ -9,7 +9,28 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#course" aria-label="Vector Race, accueil" data-i18n-aria-label="html.vector.race.accueil"><svg viewbox="0 0 36 36" aria-hidden="true"><path d="M5 29 14 7h16L20 29h-7l7-15h-2l-6 15z" fill="currentColor"></path></svg><span data-i18n-slots="0:html.vector">VECTOR<span class="brand-light" data-i18n-slots="0:html.race">RACE</span></span></a>
+    <a class="brand" href="#course" aria-label="Vector Race, accueil" data-i18n-aria-label="html.vector.race.accueil">
+      <svg viewBox="0 -1600 1600 1600" aria-hidden="true">
+  <path
+    d="M 0, 0
+       L 931, -149
+       L 568, -735
+       L 1243, -862
+       L 1287,-652
+       L 1548,-1067
+       L 1113,-1348
+       L 1157,-1174
+       L 232,-865
+       L 669,-251
+       Z"
+    fill="currentColor"
+    stroke-linejoin="miter"/>
+</svg>
+<span>
+    <span data-i18n-slots="0:html.vector" class="brand-bold">VECTOR</span>
+    <span class="brand-light" data-i18n-slots="0:html.race">RACE</span>
+</span>
+</span></a>
     <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="html.navigation.principale"><button data-view="race" class="active" data-i18n-slots="0:html.course">Course</button><button data-view="editor" data-i18n-slots="0:html.atelier">Atelier</button></nav>
     <div class="header-actions"><span class="local-tag" data-i18n-slots="1:html.solo.tour.par.tour"><i></i> SOLO · TOUR PAR TOUR</span><button id="soundBtn" class="icon-btn" aria-label="Activer le son" title="Activer le son" data-i18n-title="app.activer.le.son" data-i18n-aria-label="app.activer.le.son"><span id="soundIcon">♪</span></button><button id="themeBtn" class="icon-btn" aria-label="Activer le thème clair" title="Activer le thème clair" aria-pressed="false" data-i18n-title="html.activer.le.theme.clair" data-i18n-aria-label="html.activer.le.theme.clair">☀</button><button id="languageBtn" class="language-toggle" aria-label="Passer en anglais" title="Français / English" data-i18n-title="html.francais.english" data-i18n-aria-label="html.passer.en.anglais"><span data-locale="fr" data-i18n-slots="0:html.fr">FR</span><span aria-hidden="true">/</span><span data-locale="en" data-i18n-slots="0:html.en">EN</span></button><button id="helpBtn" class="icon-btn" aria-label="Afficher les règles" title="Les règles" data-i18n-title="html.les.regles" data-i18n-aria-label="html.afficher.les.regles">?</button></div>
   </header>
@@ -57,8 +78,8 @@
           <p id="solutionStep" class="solution-step"></p>
         </div>
       </div>
-      <div class="keyboard-hint"><span class="key">7</span><span class="key">8</span><span class="key">9</span><div data-i18n-slots="0:html.le.pave.numerique.fonctionne.aussi">Le pavé numérique fonctionne aussi.<br><span data-i18n-slots="0:html.azerty.aze.qsd.wxc;2:html.qwerty.qwe.asd.zxc">AZERTY : AZE / QSD / WXC.<br>QWERTY : QWE / ASD / ZXC.</span></div></div>
-      <div class="finish-reminder"><svg viewbox="0 0 28 28" aria-hidden="true"><path d="M7 24V4m0 1h15l-4 5 4 5H7" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg><div><strong data-i18n-slots="0:html.finir.cest.savoir.sarreter">Finir, c’est savoir s’arrêter.</strong><p data-i18n-slots="0:html.atteins.la.ligne.a.vitesse;2:html.pour.remporter.la.course">Atteins la ligne à vitesse <b>(0, 0)</b> pour remporter la course.</p></div></div>
+      <div class="finish-reminder">
+<svg viewbox="0 0 28 28" aria-hidden="true"><path d="M7 24V4m0 1h15l-4 5 4 5H7" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg><div><strong data-i18n-slots="0:html.finir.cest.savoir.sarreter">Finir, c’est savoir s’arrêter.</strong><p data-i18n-slots="0:html.atteins.la.ligne.a.vitesse;2:html.pour.remporter.la.course">Atteins la ligne à vitesse <b>(0, 0)</b> pour remporter la course.</p></div></div>
       <label class="ghost-toggle"><input type="checkbox" id="ghostToggle" checked><span data-i18n-slots="0:html.afficher.mon.meilleur.trace">Afficher mon meilleur tracé</span></label>
     </aside>
   </div>
@@ -82,7 +103,8 @@
 
   <dialog id="introDialog" class="intro-dialog" aria-labelledby="introTitle"><div class="intro-top"><span class="eyebrow" data-i18n-slots="0:html.bienvenue.dans.vector.race">BIENVENUE DANS VECTOR RACE</span><button id="introLanguageBtn" class="language-toggle" aria-label="Passer en anglais" data-i18n-aria-label="html.passer.en.anglais">FR / EN</button><button id="introClose" class="intro-close" aria-label="Fermer la présentation" data-i18n-aria-label="html.fermer.la.presentation">×</button></div><div class="guide-layout"><div class="guide-heading"><div class="eyebrow" data-i18n-slots="0:html.les.regles.du.jeu">LES RÈGLES DU JEU</div><h1 id="introTitle" data-i18n-slots="0:html.la.vitesse.est.un.choix;2:html.linertie.une.consequence">La vitesse est un choix.<br>L’inertie, une conséquence<span>.</span></h1><p data-i18n-slots="0:html.vector.race.est.une.course.de.reflexion.au.tour.par.tour;2:html.pas.de.chrono.seulement.toi.la.grille.et.la.meilleure.trajectoire">Vector Race est une course de réflexion, au tour par tour.<br>Pas de chrono : seulement toi, la grille et la meilleure trajectoire.</p></div><div class="guide-cards"><article><span class="guide-number">01</span><div class="guide-art" id="guideOne"></div><h3 data-i18n-slots="0:html.garde.ton.elan">Garde ton élan.</h3><p data-i18n-slots="0:html.ta.vitesse.est.un.vecteur;2:html.a.chaque.tour.tu.conserves.ce.vecteur.la.voiture.continue.dans.la">Ta vitesse est un vecteur <b data-i18n-slots="0:html.x.y">(x, y)</b>. À chaque tour, tu conserves ce vecteur : la voiture continue dans la même direction.</p></article><article><span class="guide-number">02</span><div class="guide-art" id="guideTwo"></div><h3 data-i18n-slots="0:html.ajuste.puis.avance">Ajuste, puis avance.</h3><p data-i18n-slots="0:html.ajoute;2:html.tu.avances.ensuite.selon.ce.nouveau.vecteur.ne.rien.accelerer.ne.signifie">Ajoute <b data-i18n-slots="0:html.1.0.ou.1.sur.chaque.axe">−1, 0 ou +1 sur chaque axe</b>. Tu avances ensuite selon ce nouveau vecteur. Ne rien accélérer ne signifie pas s’arrêter !</p></article><article><span class="guide-number">03</span><div class="guide-art" id="guideThree"></div><h3 data-i18n-slots="0:html.anticipe.le.freinage">Anticipe le freinage.</h3><p data-i18n-slots="0:html.le.segment.entier.doit.rester.sur.la.piste.pour.gagner.rejoins.larrivee;2:html.meme.si.cela.exige.un.dernier.coup.sur.place">Le segment entier doit rester sur la piste. Pour gagner, rejoins l’arrivée et réduis ton vecteur à <b>(0, 0)</b>, même si cela exige un dernier coup sur place.</p></article></div><div class="guide-bottom"><div><h3 data-i18n-slots="0:html.une.bonne.course.tient.en.peu.de.coups">Une bonne course tient en peu de coups.</h3><p data-i18n-slots="0:html.or.le.minimum.calcule.pour.le.circuit.argent.jusqua.3.coups.de;2:html.annuler.demander.un.indice.ou.consulter.la.solution.active.lentrainement.cette.tentative">Or : le minimum calculé pour le circuit. Argent : jusqu’à 3 coups de plus. Bronze : toute arrivée valide.<br>Annuler, demander un indice ou consulter la solution active l’entraînement : cette tentative ne remplace pas ton record.</p></div><button id="guidePlayBtn" class="primary" data-i18n-slots="0:html.compris.a.moi.de.jouer">Compris, à moi de jouer <span>↗</span></button></div><div class="controls-reference"><span data-i18n-slots="0:html.souris.tactile">SOURIS / TACTILE <b data-i18n-slots="0:html.choisis.ton.depart.puis.joue.ta.premiere.acceleration">Choisis ton départ, puis joue ta première accélération</b></span><span data-i18n-slots="0:html.clavier">CLAVIER <b data-i18n-slots="0:html.pave.19.ou.aze.qsd.wxc.azerty">Pavé 1–9 ou AZE / QSD / WXC (AZERTY)</b></span><span data-i18n-slots="0:html.raccourcis">RACCOURCIS <b data-i18n-slots="0:html.r.recommencer.retour.arriere.annuler.echap.pause">R : recommencer · Retour arrière : annuler · Échap : pause</b></span></div></div></dialog>
 
-  <footer class="site-footer"><span data-i18n-slots="0:html.vector.race;2:html.chaque.coup.dessine.la.suite">VECTOR RACE <b>—</b> CHAQUE COUP DESSINE LA SUITE.</span><a href="./vector-race-sources.zip" download data-i18n-slots="0:html.sources.completes.zip">SOURCES COMPLÈTES .ZIP ↗</a><span data-i18n-slots="0:html.fait.pour.prendre.son.temps">FAIT POUR PRENDRE SON TEMPS. <i>↗</i></span></footer>
+  <footer class="site-footer"><span data-i18n-slots="0:html.copyright.disclaimer.start;2:html.copyright.disclaimer.end">À partir d'un code original de Mathieu Vavrille en Python/Tkinter<br>Interface web vibe codée par GPT6.1 et Julien Vavrille<br></span><a href="./vector-race-sources.zip" download data-i18n-slots="0:html.tous.droits.reserves">© 2023-2026 Julien Vavrille, Mathieu Vavrille. Tous droits réservés</a></footer>
+
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <dialog id="gameDialog"><div class="dialog-kicker" id="dialogKicker"></div><div class="dialog-art" id="dialogArt"></div><h2 id="dialogTitle"></h2><p id="dialogText"></p><div id="dialogExtra"></div><div id="dialogActions" class="dialog-actions"></div><button id="dialogClose" class="dialog-close" aria-label="Fermer" data-i18n-aria-label="html.fermer">×</button></dialog>
   <input id="importFile" type="file" accept=".trk,.json,application/json" hidden>

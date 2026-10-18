@@ -265,8 +265,6 @@ export const messages = {
     "html.vitesse.de.la.demonstration": "Vitesse de la démonstration",
     "html.0.5": "×0,5",
     "html.le.pave.numerique.fonctionne.aussi": "Le pavé numérique fonctionne aussi.",
-    "html.azerty.aze.qsd.wxc": "AZERTY : AZE / QSD / WXC.",
-    "html.qwerty.qwe.asd.zxc": "QWERTY : QWE / ASD / ZXC.",
     "html.finir.cest.savoir.sarreter": "Finir, c’est savoir s’arrêter.",
     "html.atteins.la.ligne.a.vitesse": "Atteins la ligne à vitesse ",
     "html.pour.remporter.la.course": " pour remporter la course.",
@@ -350,16 +348,16 @@ export const messages = {
     "html.raccourcis": "RACCOURCIS ",
     "html.r.recommencer.retour.arriere.annuler.echap.pause": "R : recommencer · Retour arrière : annuler · Échap : pause",
     "html.vector.race": "VECTOR RACE ",
-    "html.chaque.coup.dessine.la.suite": " CHAQUE COUP DESSINE LA SUITE.",
-    "html.sources.completes.zip": "SOURCES COMPLÈTES .ZIP ↗",
-    "html.fait.pour.prendre.son.temps": "FAIT POUR PRENDRE SON TEMPS. ",
     "html.fermer": "Fermer",
     "html.vector.race2": "VECTOR RACE",
     "html.preparation.de.la.grille": "Préparation de la grille…",
     "guide.9.choix": "9 choix",
     "ui.activer.le.theme.sombre": "Activer le thème sombre",
     "ui.passer.en.francais": "Passer en français",
-    "app.latelier": "L’ATELIER"
+    "app.latelier": "L’ATELIER",
+    "html.copyright.disclaimer.start": "À partir d'un code original de Mathieu Vavrille en Python/Tkinter",
+    "html.copyright.disclaimer.end": "Interface web vibe codée par GPT6.1 and Julien Vavrille",
+    "html.tous.droits.reserves": "© 2023-2026 Julien Vavrille, Mathieu Vavrille. Tous droits réservés"
   },
   "en": {
     "app.storage.unavailable": "Storage unavailable",
@@ -626,8 +624,6 @@ export const messages = {
     "html.vitesse.de.la.demonstration": "Demo playback speed",
     "html.0.5": "×0.5",
     "html.le.pave.numerique.fonctionne.aussi": "You can also use the number pad.",
-    "html.azerty.aze.qsd.wxc": "AZERTY: AZE / QSD / WXC.",
-    "html.qwerty.qwe.asd.zxc": "QWERTY: QWE / ASD / ZXC.",
     "html.finir.cest.savoir.sarreter": "Finishing means knowing when to stop.",
     "html.atteins.la.ligne.a.vitesse": "Reach the finish at velocity ",
     "html.pour.remporter.la.course": " to win the race.",
@@ -711,15 +707,15 @@ export const messages = {
     "html.raccourcis": "SHORTCUTS ",
     "html.r.recommencer.retour.arriere.annuler.echap.pause": "R: restart · Backspace: undo · Esc: pause",
     "html.vector.race": "VECTOR RACE ",
-    "html.chaque.coup.dessine.la.suite": " EVERY MOVE SHAPES THE NEXT.",
-    "html.sources.completes.zip": "FULL SOURCE .ZIP ↗",
-    "html.fait.pour.prendre.son.temps": "MADE FOR TAKING YOUR TIME. ",
     "html.fermer": "Close",
     "html.vector.race2": "VECTOR RACE",
     "html.preparation.de.la.grille": "Preparing the grid…",
     "guide.9.choix": "9 choices",
     "ui.activer.le.theme.sombre": "Switch to dark theme",
     "ui.passer.en.francais": "Switch to French",
-    "app.latelier": "EDITOR"
+    "app.latelier": "EDITOR",
+    "html.copyright.disclaimer.start": "From an original code by Mathieu Vavrille in Python/Tkinter",
+    "html.copyright.disclaimer.end": "Web interface vibe coded by GPT6.1 and Julien Vavrille",
+    "html.tous.droits.reserves": "© 2023-2026 Julien Vavrille, Mathieu Vavrille. All rights reserved"
   }
 };
